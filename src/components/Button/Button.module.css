@@ -1,0 +1,12 @@
+.button {
+    border-radius: 10px;
+    border-color: var(--color);
+    background-color: var(--color);
+    font-size: 65px;
+    padding: 0 25px;
+}
+
+.button:disabled {
+    --color: #5f9ea0;
+    background-color: var(--color);
+}

@@ -1,4 +1,4 @@
-import s from "./Counter.module.css";
+import s from "../Button/Button.module.css";
 
 type ResetBtnPropsType = {
     title: string,
