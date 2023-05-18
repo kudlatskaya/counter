@@ -1,20 +1,17 @@
-import React from 'react';
 import s from "./Counter.module.css";
 
 type ResetBtnPropsType = {
     title: string,
-    setValue: () => void,
-    disabled: boolean,
+    callBack: () => void,
+    disabled?: boolean,
 }
 
 const Button = (props: ResetBtnPropsType) => {
-    let { title, setValue, disabled } = props;
+    let { title, callBack, disabled } = props;
 
     const onClickHandler = () => {
-        setValue();
+        callBack();
     }
-
-    //let button = disabled ? s.button : s.
 
     return (
         <div>
