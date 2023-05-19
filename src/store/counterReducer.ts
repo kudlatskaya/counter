@@ -1,3 +1,5 @@
+import {loadState} from "../localStorage";
+
 const INCREMENT = 'INCREMENT'
 const RESET = 'RESET'
 
@@ -7,11 +9,7 @@ export type StateCounterType = {
 
 type ActionType = IncrementCounterACType | ResetCounterACType
 
-let initialState: StateCounterType = {
-    value: 0,
-}
-
-export const counterReducer = (state: StateCounterType = initialState, action: ActionType): StateCounterType => {
+export const counterReducer = (state: StateCounterType = loadState(), action: ActionType): StateCounterType => {
     switch (action.type) {
         case INCREMENT:
             return {...state, value: action.value};
@@ -22,7 +20,6 @@ export const counterReducer = (state: StateCounterType = initialState, action: A
         default:
             return state;
     }
-
 }
 
 type IncrementCounterACType = ReturnType<typeof incrementCounterAC>

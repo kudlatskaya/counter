@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import Button from "../Button/Button";
 import s from "./Counter.module.css";
 import {useDispatch, useSelector} from "react-redux";
@@ -9,19 +8,16 @@ const Counter = () => {
     let incrementBtnTitle = 'inc';
     let resetBtnTitle = 'reset';
 
-    //let [value, setValue] = useState<number>(0);
     let counter = useSelector<AppRootStateType, StateCounterType>((state) => state.counter)
     let counterValue = counter.value
 
     const dispatch = useDispatch()
 
     const increment = () => {
-        //setValue(++value);
         dispatch(incrementCounterAC(++counterValue))
     }
 
     const reset = () => {
-        //setValue(0);
         dispatch(resetCounterAC())
     }
 
