@@ -1,4 +1,5 @@
 import {loadState} from "../localStorage";
+import {Dispatch} from "redux";
 
 const INCREMENT = 'INCREMENT'
 const RESET = 'RESET'
@@ -7,9 +8,11 @@ export type StateCounterType = {
     value: number,
 }
 
-type ActionType = IncrementCounterACType | ResetCounterACType
+type ActionType =
+    ReturnType<typeof incrementCounterAC>
+    | ReturnType<typeof resetCounterAC>
 
-export const counterReducer = (state: StateCounterType = loadState(), action: ActionType): StateCounterType => {
+export const counterReducer = (state: StateCounterType, action: ActionType): StateCounterType => {
     switch (action.type) {
         case INCREMENT:
             return {...state, value: action.value};
@@ -22,19 +25,12 @@ export const counterReducer = (state: StateCounterType = loadState(), action: Ac
     }
 }
 
-type IncrementCounterACType = ReturnType<typeof incrementCounterAC>
 
-export const incrementCounterAC = (value: number) => {
-    return {
-        type: INCREMENT,
-        value,
-    } as const
-}
+// actions
 
-type ResetCounterACType = ReturnType<typeof resetCounterAC>
+export const incrementCounterAC = (value: number) => ({type: INCREMENT, value} as const)
+export const resetCounterAC = () => ({type: RESET} as const)
 
-export const resetCounterAC = () => {
-    return {
-        type: RESET,
-    } as const
-}
+
+
+
